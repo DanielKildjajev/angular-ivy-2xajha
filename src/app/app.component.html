@@ -1,9 +1,10 @@
 <input #search type="text" />
 <button type="submit" (click)="startSearch()">Search</button>
 
-
-<p>
-	<hello [name]="pageTitle"></hello>
-	{{pageSummary}}
-</p>
-<img [src]="thumbnail" width="auto" height="auto">
+<div *ngIf="searchData">
+	<p>
+		<hello [name]="searchData.titles.display"></hello>
+		{{searchData.extract}}
+	</p>
+	<img [src]="searchData.thumbnail.source" width="auto" height="auto">
+</div>

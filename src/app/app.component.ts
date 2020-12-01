@@ -18,18 +18,16 @@ export class AppComponent {
           this.searchInput.nativeElement.value
         }`
       )
-      .subscribe(data => {
-        console.log(data);
-        this.pageSummary = data.extract;
-        this.thumbnail = data.thumbnail.source;
-        this.pageTitle = data.displaytitle;
-      }, error => {
-
-      });
+      .subscribe(
+        data => {
+          console.log(data);
+          this.searchData = data;
+        },
+        error => {
+          this.searchData = null;
+          throw error;
+        }
+      );
   }
-
-  name = "Angular " + VERSION.major;
-  pageTitle: string;
-  pageSummary: string;
-  thumbnail: string;
+  searchData: any;
 }
